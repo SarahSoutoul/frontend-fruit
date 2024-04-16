@@ -13,11 +13,26 @@ function extractFruit(e) {
     e.target.fruitInput.value = ""
 }
 
-function fetchFruitData(fruit){
-    fetch(`https://fruity-api.onrender.com/fruits/${fruit}`)
-        .then(processResponse)
-        .then(data => addFruit(data))
-        .catch((e) => console.log(e));
+// function fetchFruitData(fruit){
+//     fetch(`https://fruity-api.onrender.com/fruits/${fruit}`)
+//         .then(processResponse)
+//         .then(data => addFruit(data))
+//         .catch((e) => console.log(e));
+// }
+
+async function fetchFruitData(fruit) {
+    try {
+        const resp = await fetch(`https://fruity-api.onrender.com/fruits/${fruit}`);
+
+        if (resp.ok) {
+            const data = await resp.json();
+            addFruit(data);
+        } else {
+            throw "Error: http status code = " + resp.status;
+        }
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 function processResponse(resp) {
