@@ -21,7 +21,7 @@ function extractFruit(e) {
 
 async function fetchFruitData(fruit) {
     try {
-        const resp = await fetch(`https://fruity-api.onrender.com/fruits/${fruit}`);
+        const resp = await fetch(`https://fruity-api-cxtw.onrender.com/fruits/${fruit}`);
 
         if (resp.ok) {
             const data = await resp.json();
