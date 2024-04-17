@@ -12,16 +12,10 @@ function extractFruit(e) {
     e.target.fruitInput.value = ""
 }
 
-// function fetchFruitData(fruit){
-//     fetch(`https://fruity-api.onrender.com/fruits/${fruit}`)
-//         .then(processResponse)
-//         .then(data => addFruit(data))
-//         .catch((e) => console.log(e));
-// }
 
 async function fetchFruitData(fruit) {
     try {
-        const resp = await fetch(`https://fruity-api.onrender.com/fruits/${fruit}`);
+        const resp = await fetch(`https://fruit-api-5v0j.onrender.com/fruits/${fruit}`);
 
         if (resp.ok) {
             const data = await resp.json();
@@ -34,13 +28,7 @@ async function fetchFruitData(fruit) {
     }
 }
 
-function processResponse(resp) {
-    if (resp.ok) {
-        return resp.json();
-    } else {
-        throw "Error: http status code = " + resp.status;
-    }
-}
+
 function addFruit(fruit) {
     const li = document.createElement("li");
     li.textContent = fruit.name;
